@@ -1,8 +1,9 @@
-FROM rshop/pipeline:8.0
+FROM node:18-alpine AS node
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/main/ \
-        nodejs=8.9.3-r1 \
-        python2 \
-        g++ \
-        make \
-    && npm install -g grunt gulp
+FROM rshop/pipeline:8.1
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/share /usr/local/share
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
