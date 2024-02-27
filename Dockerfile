@@ -1,6 +1,6 @@
 FROM node:18-alpine AS node
 
-FROM rshop/pipeline:8.1
+FROM rshop/pipeline:8.2
 
 COPY --from=node /usr/lib /usr/lib
 COPY --from=node /usr/local/share /usr/local/share
