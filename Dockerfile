@@ -1,4 +1,4 @@
-FROM rshop/pipeline:8.4
+FROM rshop/pipeline:8.5
 
 RUN set -ex \
     && apk update \
